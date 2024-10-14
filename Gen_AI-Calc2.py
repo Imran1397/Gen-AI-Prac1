@@ -46,12 +46,12 @@ with col3:
     st.button("9", on_click=update_expression, args=("9",))
     st.button("6", on_click=update_expression, args=("6",))
     st.button("3", on_click=update_expression, args=("3",))
-    st.button("+", on_click=update_expression, args=("++",))
+    st.button("+", on_click=update_expression, args=(""+"",))
 
 with col4:
     st.button("/", on_click=update_expression, args=("/",))
-    st.button("*", on_click=update_expression, args=("*",))
-    st.button("-", on_click=update_expression, args=("-",))
+    st.button("*", on_click=update_expression, args=(""*"",))
+    st.button("-", on_click=update_expression, args=(""-"",))
     st.button("=", on_click=calculate_expression)
 
 # Second row of scientific buttons
