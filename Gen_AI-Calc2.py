@@ -49,8 +49,8 @@ with col3:
     st.button("+", on_click=update_expression, args=("+",))  # Addition
 
 with col4:
-    st.button("/", on_click=update_expression, args=("/",))  # Division
-    st.button("*", on_click=update_expression, args=("*",))  # Multiplication
+    st.button("&#247;", on_click=update_expression, args=("/",))  # Division
+    st.button("&#215;", on_click=update_expression, args=("*",))  # Multiplication
     st.button("-", on_click=update_expression, args=("-",))  # Subtraction
     st.button("=", on_click=calculate_expression)  # Calculate result
 
