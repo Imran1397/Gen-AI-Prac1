@@ -46,12 +46,12 @@ with col3:
     st.button("9", on_click=update_expression, args=("9",))
     st.button("6", on_click=update_expression, args=("6",))
     st.button("3", on_click=update_expression, args=("3",))
-    st.button("+", on_click=update_expression, args=("+",))
+    st.button("+", on_click=update_expression, args=("+",))  # Display + properly
 
 with col4:
-    st.button("/", on_click=update_expression, args=("/",))
-    st.button("*", on_click=update_expression, args=("*",))
-    st.button("-", on_click=update_expression, args=("-",))
+    st.button("/", on_click=update_expression, args=("/",))  # Display / properly
+    st.button("*", on_click=update_expression, args=("*",))  # Display * properly
+    st.button("-", on_click=update_expression, args=("-",))  # Display - properly
     st.button("=", on_click=calculate_expression)
 
 # Second row of scientific buttons
@@ -74,4 +74,3 @@ with col8:
 
 # Info text
 st.write("Use buttons to build the expression and press '=' to calculate.")
-
