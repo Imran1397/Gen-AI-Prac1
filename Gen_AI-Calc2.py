@@ -46,12 +46,12 @@ with col3:
     st.button("9", on_click=update_expression, args=("9",))
     st.button("6", on_click=update_expression, args=("6",))
     st.button("3", on_click=update_expression, args=("3",))
-    st.button("+", on_click=update_expression, args=("+",))  # Display + properly
+    st.button("&#43;", on_click=update_expression, args=("+",))  # HTML for +
 
 with col4:
-    st.button("/", on_click=update_expression, args=("/",))  # Display / properly
-    st.button("*", on_click=update_expression, args=("*",))  # Display * properly
-    st.button("-", on_click=update_expression, args=("-",))  # Display - properly
+    st.button("&#247;", on_click=update_expression, args=("/",))  # HTML for ÷
+    st.button("&#215;", on_click=update_expression, args=("*",))  # HTML for ×
+    st.button("&#8722;", on_click=update_expression, args=("-",))  # HTML for −
     st.button("=", on_click=calculate_expression)
 
 # Second row of scientific buttons
@@ -62,15 +62,4 @@ with col5:
     st.button("cos", on_click=update_expression, args=("math.cos(",))
 
 with col6:
-    st.button("tan", on_click=update_expression, args=("math.tan(",))
-    st.button("log", on_click=update_expression, args=("math.log(",))
-
-with col7:
-    st.button("sqrt", on_click=update_expression, args=("math.sqrt(",))
-    st.button("exp", on_click=update_expression, args=("math.exp(",))
-
-with col8:
-    st.button("C", on_click=clear_expression)  # Clear button
-
-# Info text
-st.write("Use buttons to build the expression and press '=' to calculate.")
+    st.button("tan", on_click=update_expression,
