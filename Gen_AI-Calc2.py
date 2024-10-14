@@ -43,16 +43,16 @@ with col2:
     st.button(".", on_click=update_expression, args=(".",))
 
 with col3:
-    st.button("9", on_click=update_expression, args=("9",))
-    st.button("6", on_click=update_expression, args=("6",))
-    st.button("3", on_click=update_expression, args=("3",))
-    st.button("+", on_click=update_expression, args=("\u002B",))  # Addition
+    st.button("\u0039", on_click=update_expression, args=("9",))  # 9
+    st.button("\u0036", on_click=update_expression, args=("6",))  # 6
+    st.button("\u0033", on_click=update_expression, args=("3",))  # 3
+    st.button("\u002B", on_click=update_expression, args=("+",))   # + (Addition)
 
 with col4:
-    st.button("&#247;", on_click=update_expression, args=("/",))  # Division
-    st.button("&#215;", on_click=update_expression, args=("*",))  # Multiplication
-    st.button("-", on_click=update_expression, args=("\u2212",))  # Subtraction
-    st.button("=", on_click=calculate_expression)  # Calculate result
+    st.button("\u00F7", on_click=update_expression, args=("/",))   # ÷ (Division)
+    st.button("\u00D7", on_click=update_expression, args=("*",))   # × (Multiplication)
+    st.button("\u2212", on_click=update_expression, args=("-",))   # − (Subtraction)
+    st.button("=", on_click=calculate_expression)
 
 # Second row of scientific buttons
 col5, col6, col7, col8 = st.columns(4)
