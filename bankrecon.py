@@ -1,5 +1,5 @@
 import pandas as pd
-from datetime import datetime
+import gradio as gr
 
 # Load the bank statement and company ledger CSV files
 def load_data(bank_statement_file, company_ledger_file):
@@ -13,7 +13,11 @@ def convert_to_date(df, date_column):
     return df
 
 # Reconcile function with a focus on matching reversed debits and credits
-def reconcile(bank_df, ledger_df, date_tolerance_days=180):
+def reconcile(bank_statement_file, company_ledger_file, date_tolerance_days=180):
+    # Load the CSV files
+    bank_df = pd.read_csv(bank_statement_file.name)
+    ledger_df = pd.read_csv(company_ledger_file.name)
+
     # Ensure the 'Date' column is in datetime format
     bank_df = convert_to_date(bank_df, 'Date')
     ledger_df = convert_to_date(ledger_df, 'Date')
@@ -49,18 +53,17 @@ def reconcile(bank_df, ledger_df, date_tolerance_days=180):
     # Remaining rows in ledger_df are unmatched
     unmatched_in_ledger = ledger_df
 
-    # Return the results
-    return pd.DataFrame(unmatched_in_bank), pd.DataFrame(unmatched_in_ledger)
+    # Prepare output
+    result = f"Unmatched Transactions in Bank Statement:\n{pd.DataFrame(unmatched_in_bank)[['Date', 'Description', 'Debit', 'Credit']]}\n\n"
+    result += f"Unmatched Transactions in Company Ledger:\n{unmatched_in_ledger[['Date', 'Description', 'Debit', 'Credit']]}"
+    
+    return result
 
-# Load and process files
-bank_df, ledger_df = load_data('bank_statement.csv', 'company_ledger.csv')
+# Gradio interface
+inputs = [
+    gr.inputs.File(label="Upload Bank Statement CSV"),
+    gr.inputs.File(label="Upload Company Ledger CSV")
+]
+output = gr.outputs.Textbox()
 
-# Reconcile data with a 180-day tolerance for date differences
-unmatched_in_bank, unmatched_in_ledger = reconcile(bank_df, ledger_df, date_tolerance_days=180)
-
-# Display the unreconciled transactions
-print("Unmatched in Bank Statement:")
-print(unmatched_in_bank[['Date', 'Description', 'Debit', 'Credit']])
-
-print("\nUnmatched in Company Ledger:")
-print(unmatched_in_ledger[['Date', 'Description', 'Debit', 'Credit']])
+gr.Interface(fn=reconcile, inputs=inputs, outputs=output, title="Bank Reconciliation Tool").launch()
